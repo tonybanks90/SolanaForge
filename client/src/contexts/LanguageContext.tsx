@@ -48,7 +48,21 @@ const translations: Translations = {
   'main.liveTokens': { en: 'Live Tokens', zh: '实时代币' },
   'main.activeTokens': { en: 'active tokens', zh: '活跃代币' },
   'alert.fomoActive': { en: 'FOMO Alert Active', zh: 'FOMO提醒激活' },
-  'alert.fomoDesc': { en: 'new tokens with high volume detected in the last 5 minutes', zh: '在过去5分钟内检测到高交易量的新代币' }
+  'alert.fomoDesc': { en: 'new tokens with high volume detected in the last 5 minutes', zh: '在过去5分钟内检测到高交易量的新代币' },
+  'portfolio.title': { en: 'Portfolio', zh: '投资组合' },
+  'portfolio.wallets': { en: 'Wallets', zh: '钱包' },
+  'portfolio.tradingWallets': { en: 'Trading Wallets', zh: '交易钱包' },
+  'portfolio.withdrawalWallets': { en: 'Withdrawal Wallets', zh: '提现钱包' },
+  'portfolio.archivedWallets': { en: 'Archived wallets', zh: '已归档钱包' },
+  'portfolio.noArchivedWallets': { en: 'No archived wallets', zh: '无已归档钱包' },
+  'button.create': { en: 'Create', zh: '创建' },
+  'button.import': { en: 'Import', zh: '导入' },
+  'button.add': { en: 'Add', zh: '添加' },
+  'button.withdraw': { en: 'Withdraw', zh: '提现' },
+  'button.deposit': { en: 'Deposit', zh: '充值' },
+  'button.hide': { en: 'Hide', zh: '隐藏' },
+  'button.show': { en: 'Show', zh: '显示' },
+  'button.archive': { en: 'Archive', zh: '归档' }
 };
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);

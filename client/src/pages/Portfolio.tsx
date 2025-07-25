@@ -39,7 +39,7 @@ export default function Portfolio() {
   const [autoRefresh, setAutoRefresh] = useState(false);
   const [viewMode, setViewMode] = useState<'table' | 'cards'>('table');
   const { theme } = useTheme();
-  
+
   const [tradingWallets, setTradingWallets] = useState<Wallet[]>([
     {
       id: '1',
@@ -111,21 +111,21 @@ export default function Portfolio() {
               </Badge>
             </div>
           </div>
-          
+
           <div className="flex items-center gap-2">
             {wallet.type === 'trading' && (
-              <>
-                <Button variant="outline" size="sm" className="bg-primary hover:bg-primary/90 text-primary-foreground border-primary">
-                  <Upload className="h-4 w-4 mr-1" />
-                  Withdraw
-                </Button>
-                <Button variant="outline" size="sm">
-                  <Download className="h-4 w-4 mr-1" />
-                  Deposit
-                </Button>
-              </>
-            )}
-            
+                <>
+                  <Button variant="outline" size="sm" className="bg-primary hover:bg-primary/90 text-primary-foreground border-primary">
+                    <Upload className="h-4 w-4 mr-1" />
+                    {t('button.withdraw')}
+                  </Button>
+                  <Button variant="outline" size="sm">
+                    <Download className="h-4 w-4 mr-1" />
+                    {t('button.deposit')}
+                  </Button>
+                </>
+              )}
+
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
@@ -159,7 +159,7 @@ export default function Portfolio() {
         viewMode={viewMode}
         onViewModeChange={setViewMode}
       />
-      
+
       <MobileMenu
         isOpen={isMobileMenuOpen}
         onClose={() => setIsMobileMenuOpen(false)}
@@ -171,7 +171,7 @@ export default function Portfolio() {
         viewMode={viewMode}
         onViewModeChange={setViewMode}
       />
-      
+
       <div className="container mx-auto px-4 py-6 max-w-7xl pb-20 md:pb-6">
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
@@ -186,7 +186,7 @@ export default function Portfolio() {
               </Badge>
             </div>
           </div>
-          
+
           <div className="flex items-center gap-2">
             <Badge variant="outline">
               Solana (2)
@@ -216,7 +216,7 @@ export default function Portfolio() {
                 </Button>
               </div>
             </div>
-            
+
             <div className="space-y-3">
               {tradingWallets.map((wallet) => (
                 <WalletCard 
@@ -242,7 +242,7 @@ export default function Portfolio() {
                 Add
               </Button>
             </div>
-            
+
             <div className="space-y-3">
               {withdrawalWallets.map((wallet) => (
                 <WalletCard 
@@ -267,7 +267,7 @@ export default function Portfolio() {
                 <ChevronDown className="h-4 w-4" />
               </Button>
             </div>
-            
+
             {archivedWallets.length === 0 ? (
               <Card className="border-dashed border-border bg-card/50">
                 <CardContent className="p-8 text-center">
@@ -288,7 +288,7 @@ export default function Portfolio() {
           </div>
         </div>
       </div>
-      
+
       <BottomMobileNav onMenuToggle={() => setIsMobileMenuOpen(true)} />
     </div>
   );
