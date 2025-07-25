@@ -1,0 +1,73 @@
+[{
+	"resource": "/mnt/c/Users/user/multi-trader/src/multi-trader-frontend/src/index.css",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": "unknownAtRules",
+	"severity": 4,
+	"message": "Unknown at rule @apply",
+	"source": "css",
+	"startLineNumber": 67,
+	"startColumn": 5,
+	"endLineNumber": 67,
+	"endColumn": 11,
+	"origin": "extHost2"
+},{
+	"resource": "/mnt/c/Users/user/multi-trader/src/multi-trader-frontend/src/index.css",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": "unknownAtRules",
+	"severity": 4,
+	"message": "Unknown at rule @apply",
+	"source": "css",
+	"startLineNumber": 78,
+	"startColumn": 5,
+	"endLineNumber": 78,
+	"endColumn": 11,
+	"origin": "extHost2"
+},{
+	"resource": "/mnt/c/Users/user/multi-trader/src/multi-trader-frontend/src/index.css",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": "unknownAtRules",
+	"severity": 4,
+	"message": "Unknown at rule @apply",
+	"source": "css",
+	"startLineNumber": 82,
+	"startColumn": 5,
+	"endLineNumber": 82,
+	"endColumn": 11,
+	"origin": "extHost2"
+},{
+	"resource": "/mnt/c/Users/user/multi-trader/src/multi-trader-frontend/src/index.css",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": "unknownAtRules",
+	"severity": 4,
+	"message": "Unknown at rule @apply",
+	"source": "css",
+	"startLineNumber": 86,
+	"startColumn": 5,
+	"endLineNumber": 86,
+	"endColumn": 11,
+	"origin": "extHost2"
+},{
+	"resource": "/mnt/c/Users/user/multi-trader/src/multi-trader-frontend/src/index.css",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": "unknownAtRules",
+	"severity": 4,
+	"message": "Unknown at rule @apply",
+	"source": "css",
+	"startLineNumber": 92,
+	"startColumn": 5,
+	"endLineNumber": 92,
+	"endColumn": 11,
+	"origin": "extHost2"
+},{
+	"resource": "/mnt/c/Users/user/multi-trader/src/multi-trader-frontend/src/index.css",
+	"owner": "_generated_diagnostic_collection_name_#2",
+	"code": "unknownAtRules",
+	"severity": 4,
+	"message": "Unknown at rule @apply",
+	"source": "css",
+	"startLineNumber": 96,
+	"startColumn": 5,
+	"endLineNumber": 96,
+	"endColumn": 11,
+	"origin": "extHost2"
+}]
