@@ -13,6 +13,7 @@ import {
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useTheme } from '@/contexts/ThemeContext';
 import { Search, RefreshCw, Table, Grid3X3, ChevronDown, Moon, Sun, Languages, Palette } from 'lucide-react';
+import { Link, useLocation } from 'wouter';
 import type { TokenFilters } from '@/types';
 
 interface MobileMenuProps {
@@ -40,6 +41,7 @@ export default function MobileMenu({
 }: MobileMenuProps) {
   const { language, setLanguage, t } = useLanguage();
   const { theme, toggleTheme } = useTheme();
+  const [location] = useLocation();
 
   const handleFilterChange = (key: keyof TokenFilters, value: any) => {
     const newFilters = { ...filters, [key]: value };
@@ -157,18 +159,18 @@ export default function MobileMenu({
             <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider">
               Navigation
             </h3>
-            <a href="#" className="block py-2 text-primary font-medium">
+            <Link href="/" className={location === "/" ? "block py-2 text-primary font-medium" : "block py-2 text-muted-foreground hover:text-primary transition-colors"}>
               {t('nav.allTokens')}
-            </a>
+            </Link>
             <a href="#" className="block py-2 text-muted-foreground hover:text-primary transition-colors">
               {t('nav.trenches')}
             </a>
             <a href="#" className="block py-2 text-muted-foreground hover:text-primary transition-colors">
               {t('nav.copyTrade')}
             </a>
-            <a href="#" className="block py-2 text-muted-foreground hover:text-primary transition-colors">
+            <Link href="/portfolio" className={location === "/portfolio" ? "block py-2 text-primary font-medium" : "block py-2 text-muted-foreground hover:text-primary transition-colors"}>
               {t('nav.portfolio')}
-            </a>
+            </Link>
           </nav>
 
           {/* Search */}

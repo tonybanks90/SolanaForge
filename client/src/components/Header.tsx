@@ -8,6 +8,7 @@ import {
 import { useTheme } from '@/contexts/ThemeContext';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { ChevronDown, Moon, Sun, Menu, RefreshCw, Table, Grid3X3 } from 'lucide-react';
+import { Link, useLocation } from 'wouter';
 
 interface HeaderProps {
   onMobileMenuToggle: () => void;
@@ -28,6 +29,7 @@ export default function Header({
 }: HeaderProps) {
   const { theme, toggleTheme } = useTheme();
   const { language, setLanguage, t } = useLanguage();
+  const [location] = useLocation();
 
   return (
     <header className="bg-card border-b border-border sticky top-0 z-50 backdrop-blur-sm bg-opacity-95">
@@ -46,16 +48,18 @@ export default function Header({
 
           {/* Navigation */}
           <nav className="hidden md:flex items-center space-x-6">
-            <a href="#" className="text-primary font-medium">{t('nav.allTokens')}</a>
+            <Link href="/" className={location === "/" ? "text-primary font-medium" : "text-muted-foreground hover:text-primary transition-colors"}>
+              {t('nav.allTokens')}
+            </Link>
             <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
               {t('nav.trenches')}
             </a>
             <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
               {t('nav.copyTrade')}
             </a>
-            <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+            <Link href="/portfolio" className={location === "/portfolio" ? "text-primary font-medium" : "text-muted-foreground hover:text-primary transition-colors"}>
               {t('nav.portfolio')}
-            </a>
+            </Link>
           </nav>
 
           {/* Controls */}
