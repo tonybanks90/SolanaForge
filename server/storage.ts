@@ -1,4 +1,6 @@
 import { tokens, alerts, users, type Token, type InsertToken, type Alert, type InsertAlert, type User, type InsertUser } from "@shared/schema";
+import { db } from "./db";
+import { eq, and, or, gte, lte, ilike, desc } from "drizzle-orm";
 
 export interface IStorage {
   // User methods
@@ -287,4 +289,136 @@ export class MemStorage implements IStorage {
   }
 }
 
-export const storage = new MemStorage();
+export class DatabaseStorage implements IStorage {
+  async getUser(id: number): Promise<User | undefined> {
+    const [user] = await db.select().from(users).where(eq(users.id, id));
+    return user || undefined;
+  }
+
+  async getUserByUsername(username: string): Promise<User | undefined> {
+    const [user] = await db.select().from(users).where(eq(users.username, username));
+    return user || undefined;
+  }
+
+  async createUser(insertUser: InsertUser): Promise<User> {
+    const [user] = await db
+      .insert(users)
+      .values(insertUser)
+      .returning();
+    return user;
+  }
+
+  async getTokens(filters?: {
+    search?: string;
+    platform?: string;
+    category?: string;
+    minMarketCap?: number;
+    maxMarketCap?: number;
+    minAge?: number;
+    maxAge?: number;
+    safetyCheck?: boolean;
+  }): Promise<Token[]> {
+    let query = db.select().from(tokens);
+    const conditions = [];
+
+    if (filters) {
+      if (filters.search) {
+        const searchLower = `%${filters.search.toLowerCase()}%`;
+        conditions.push(
+          or(
+            ilike(tokens.symbol, searchLower),
+            ilike(tokens.name, searchLower),
+            ilike(tokens.address, searchLower)
+          )
+        );
+      }
+
+      if (filters.platform) {
+        conditions.push(eq(tokens.platform, filters.platform));
+      }
+
+      if (filters.category) {
+        conditions.push(eq(tokens.category, filters.category));
+      }
+
+      if (filters.minMarketCap !== undefined) {
+        conditions.push(gte(tokens.marketCap, filters.minMarketCap.toString()));
+      }
+
+      if (filters.maxMarketCap !== undefined) {
+        conditions.push(lte(tokens.marketCap, filters.maxMarketCap.toString()));
+      }
+
+      if (filters.minAge !== undefined) {
+        conditions.push(gte(tokens.age, filters.minAge));
+      }
+
+      if (filters.maxAge !== undefined) {
+        conditions.push(lte(tokens.age, filters.maxAge));
+      }
+
+      if (filters.safetyCheck) {
+        conditions.push(gte(tokens.safetyScore, 7));
+      }
+    }
+
+    if (conditions.length > 0) {
+      const result = await db.select().from(tokens)
+        .where(and(...conditions))
+        .orderBy(desc(tokens.createdAt));
+      return result;
+    }
+
+    const result = await db.select().from(tokens).orderBy(desc(tokens.createdAt));
+    return result;
+  }
+
+  async getToken(id: number): Promise<Token | undefined> {
+    const [token] = await db.select().from(tokens).where(eq(tokens.id, id));
+    return token || undefined;
+  }
+
+  async getTokenByAddress(address: string): Promise<Token | undefined> {
+    const [token] = await db.select().from(tokens).where(eq(tokens.address, address));
+    return token || undefined;
+  }
+
+  async createToken(insertToken: InsertToken): Promise<Token> {
+    const [token] = await db
+      .insert(tokens)
+      .values(insertToken)
+      .returning();
+    return token;
+  }
+
+  async updateToken(id: number, updates: Partial<InsertToken>): Promise<Token | undefined> {
+    const [token] = await db
+      .update(tokens)
+      .set(updates)
+      .where(eq(tokens.id, id))
+      .returning();
+    return token || undefined;
+  }
+
+  async getAlerts(): Promise<Alert[]> {
+    const result = await db.select().from(alerts).orderBy(desc(alerts.createdAt));
+    return result;
+  }
+
+  async createAlert(insertAlert: InsertAlert): Promise<Alert> {
+    const [alert] = await db
+      .insert(alerts)
+      .values(insertAlert)
+      .returning();
+    return alert;
+  }
+
+  async markAlertAsRead(id: number): Promise<void> {
+    await db
+      .update(alerts)
+      .set({ isRead: true })
+      .where(eq(alerts.id, id));
+  }
+}
+
+export const storage = new DatabaseStorage();

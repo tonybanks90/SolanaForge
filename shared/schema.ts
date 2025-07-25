@@ -1,4 +1,5 @@
 import { pgTable, text, serial, integer, boolean, decimal, timestamp } from "drizzle-orm/pg-core";
+import { relations } from "drizzle-orm";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -55,6 +56,18 @@ export const insertUserSchema = createInsertSchema(users).omit({
   id: true,
   createdAt: true,
 });
+
+// Relations
+export const tokensRelations = relations(tokens, ({ many }) => ({
+  alerts: many(alerts),
+}));
+
+export const alertsRelations = relations(alerts, ({ one }) => ({
+  token: one(tokens, {
+    fields: [alerts.tokenId],
+    references: [tokens.id],
+  }),
+}));
 
 export type InsertToken = z.infer<typeof insertTokenSchema>;
 export type Token = typeof tokens.$inferSelect;
