@@ -24,6 +24,7 @@ import Header from "@/components/Header";
 import BottomMobileNav from "@/components/BottomMobileNav";
 import MobileMenu from "@/components/MobileMenu";
 import { useTheme } from "@/contexts/ThemeContext";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface Wallet {
   id: string;
@@ -39,6 +40,7 @@ export default function Portfolio() {
   const [autoRefresh, setAutoRefresh] = useState(false);
   const [viewMode, setViewMode] = useState<'table' | 'cards'>('table');
   const { theme } = useTheme();
+  const { t } = useLanguage();
 
   const [tradingWallets, setTradingWallets] = useState<Wallet[]>([
     {
@@ -135,11 +137,11 @@ export default function Portfolio() {
               <DropdownMenuContent align="end">
                 <DropdownMenuItem onClick={onToggleVisibility}>
                   {wallet.isVisible ? <EyeOff className="h-4 w-4 mr-2" /> : <Eye className="h-4 w-4 mr-2" />}
-                  {wallet.isVisible ? 'Hide' : 'Show'}
+                  {wallet.isVisible ? t('button.hide') : t('button.show')}
                 </DropdownMenuItem>
                 <DropdownMenuItem className="text-destructive">
                   <Trash2 className="h-4 w-4 mr-2" />
-                  Archive
+                  {t('button.archive')}
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
@@ -176,13 +178,13 @@ export default function Portfolio() {
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
           <div className="flex items-center gap-4">
-            <h1 className="text-2xl font-bold text-foreground">Portfolio</h1>
+            <h1 className="text-2xl font-bold text-foreground">{t('portfolio.title')}</h1>
             <div className="flex items-center gap-2">
               <Badge variant="secondary">
-                Portfolio
+                {t('portfolio.title')}
               </Badge>
               <Badge variant="secondary">
-                Wallets
+                {t('portfolio.wallets')}
               </Badge>
             </div>
           </div>
@@ -200,7 +202,7 @@ export default function Portfolio() {
           <div className="lg:col-span-1">
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-lg font-semibold text-foreground flex items-center gap-2">
-                Trading Wallets
+                {t('portfolio.tradingWallets')}
                 <Badge variant="secondary">
                   {tradingWallets.length}
                 </Badge>
@@ -208,11 +210,11 @@ export default function Portfolio() {
               <div className="flex gap-2">
                 <Button variant="outline" size="sm" className="bg-primary hover:bg-primary/90 text-primary-foreground border-primary">
                   <Plus className="h-4 w-4 mr-1" />
-                  Create
+                  {t('button.create')}
                 </Button>
                 <Button variant="outline" size="sm">
                   <Download className="h-4 w-4 mr-1" />
-                  Import
+                  {t('button.import')}
                 </Button>
               </div>
             </div>
@@ -232,14 +234,14 @@ export default function Portfolio() {
           <div className="lg:col-span-1">
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-lg font-semibold text-foreground flex items-center gap-2">
-                Withdrawal Wallets
+                {t('portfolio.withdrawalWallets')}
                 <Badge variant="secondary">
                   {withdrawalWallets.length}
                 </Badge>
               </h2>
               <Button variant="outline" size="sm" className="bg-primary hover:bg-primary/90 text-primary-foreground border-primary">
                 <Plus className="h-4 w-4 mr-1" />
-                Add
+                {t('button.add')}
               </Button>
             </div>
 
@@ -258,7 +260,7 @@ export default function Portfolio() {
           <div className="lg:col-span-1">
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-lg font-semibold text-foreground flex items-center gap-2">
-                Archived wallets
+                {t('portfolio.archivedWallets')}
                 <Badge variant="secondary">
                   {archivedWallets.length}
                 </Badge>
@@ -271,7 +273,7 @@ export default function Portfolio() {
             {archivedWallets.length === 0 ? (
               <Card className="border-dashed border-border bg-card/50">
                 <CardContent className="p-8 text-center">
-                  <p className="text-muted-foreground">No archived wallets</p>
+                  <p className="text-muted-foreground">{t('portfolio.noArchivedWallets')}</p>
                 </CardContent>
               </Card>
             ) : (

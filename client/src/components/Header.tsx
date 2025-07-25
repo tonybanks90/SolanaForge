@@ -128,8 +128,8 @@ export default function Header({
               </Button>
             </div>
 
-            {/* Connect Wallet - always visible */}
-            <Button className="bg-primary text-primary-foreground hover:bg-primary/90 hidden sm:flex">
+            {/* Connect Wallet - visible on small screens too */}
+            <Button className="bg-primary text-primary-foreground hover:bg-primary/90 text-xs sm:text-sm px-2 sm:px-4">
               {t('button.connectWallet')}
             </Button>
 
