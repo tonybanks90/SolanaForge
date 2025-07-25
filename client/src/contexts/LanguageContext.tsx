@@ -62,7 +62,23 @@ const translations: Translations = {
   'button.deposit': { en: 'Deposit', zh: '充值' },
   'button.hide': { en: 'Hide', zh: '隐藏' },
   'button.show': { en: 'Show', zh: '显示' },
-  'button.archive': { en: 'Archive', zh: '归档' }
+  'button.archive': { en: 'Archive', zh: '归档' },
+  'footer.description': { en: 'Best tool to Discover and Snipe MEME tokens faster. Follow Smart Money to earn!', zh: '发现和狙击模因代币的最佳工具。跟随聪明资金赚钱！' },
+  'footer.product': { en: 'Product', zh: '产品' },
+  'footer.resources': { en: 'Resources', zh: '资源' },
+  'footer.legal': { en: 'Legal', zh: '法律' },
+  'footer.analytics': { en: 'Analytics', zh: '分析' },
+  'footer.documentation': { en: 'Documentation', zh: '文档' },
+  'footer.api': { en: 'API', zh: 'API' },
+  'footer.tutorials': { en: 'Tutorials', zh: '教程' },
+  'footer.blog': { en: 'Blog', zh: '博客' },
+  'footer.community': { en: 'Community', zh: '社区' },
+  'footer.termsOfService': { en: 'Terms of Service', zh: '服务条款' },
+  'footer.privacyPolicy': { en: 'Privacy Policy', zh: '隐私政策' },
+  'footer.disclaimer': { en: 'Disclaimer', zh: '免责声明' },
+  'footer.support': { en: 'Support', zh: '支持' },
+  'footer.allRightsReserved': { en: 'All rights reserved.', zh: '版权所有。' },
+  'footer.poweredBy': { en: 'Powered by:', zh: '技术支持：' }
 };
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);

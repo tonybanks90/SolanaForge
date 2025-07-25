@@ -96,73 +96,73 @@ export default function TokenRow({ token }: TokenRowProps) {
 
   return (
     <TableRow className="token-row-hover">
-      <TableCell className="sticky left-0 bg-card min-w-[200px]">
+      <TableCell className="sticky left-0 bg-card min-w-[180px] sm:min-w-[200px] p-2 sm:p-4">
         <div className="flex items-center space-x-2 sm:space-x-3">
-          <div className="w-8 h-8 sm:w-10 sm:h-10 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0">
+          <div className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0">
             <span className="text-primary font-bold text-xs sm:text-sm">
-              {token.symbol.slice(0, 3)}
+              {token.symbol.slice(0, 2)}
             </span>
           </div>
           <div className="min-w-0 flex-1">
-            <div className="flex items-center space-x-1 sm:space-x-2">
-              <span className="font-semibold text-sm sm:text-base truncate">{token.symbol}</span>
+            <div className="flex items-center space-x-1">
+              <span className="font-semibold text-xs sm:text-sm md:text-base truncate">{token.symbol}</span>
+              <div className="hidden sm:block">
+                {getStatusBadge()}
+              </div>
+            </div>
+            <div className="text-xs text-muted-foreground truncate">{token.name}</div>
+            <div className="sm:hidden mt-1">
               {getStatusBadge()}
-            </div>
-            <div className="text-xs sm:text-sm text-muted-foreground truncate">{token.name}</div>
-            <div className="text-xs text-muted-foreground font-mono sm:hidden">
-              {token.address.slice(0, 4)}...{token.address.slice(-4)}
-            </div>
-            <div className="hidden sm:block text-xs text-muted-foreground font-mono">
-              {token.address.slice(0, 6)}...{token.address.slice(-6)}
             </div>
           </div>
         </div>
       </TableCell>
       
-      <TableCell className="min-w-[120px]">
-        <div className="font-semibold text-sm sm:text-base">${token.price}</div>
-        <div className={`text-xs sm:text-sm ${getPriceChangeColor()}`}>
+      <TableCell className="min-w-[90px] sm:min-w-[120px] p-2 sm:p-4">
+        <div className="font-semibold text-xs sm:text-sm md:text-base">${token.price}</div>
+        <div className={`text-xs ${getPriceChangeColor()}`}>
           {parseFloat(token.priceChange24h) > 0 ? '+' : ''}
           {token.priceChange24h}%
         </div>
       </TableCell>
       
-      <TableCell className="min-w-[120px] hidden sm:table-cell">
-        <div className="font-semibold text-sm sm:text-base">{formatNumber(token.marketCap, '')}</div>
-        <div className="text-xs sm:text-sm text-muted-foreground">{token.platform}</div>
+      <TableCell className="min-w-[120px] hidden sm:table-cell p-2 sm:p-4">
+        <div className="font-semibold text-xs sm:text-sm">{formatNumber(token.marketCap, '')}</div>
+        <div className="text-xs text-muted-foreground">{token.platform}</div>
       </TableCell>
       
-      <TableCell className="min-w-[120px] hidden md:table-cell">
-        <div className="font-semibold text-sm sm:text-base">{formatNumber(token.volume24h, '')}</div>
-        <div className="text-xs sm:text-sm text-muted-foreground">24h</div>
+      <TableCell className="min-w-[120px] hidden md:table-cell p-2 sm:p-4">
+        <div className="font-semibold text-xs sm:text-sm">{formatNumber(token.volume24h, '')}</div>
+        <div className="text-xs text-muted-foreground">24h</div>
       </TableCell>
       
-      <TableCell className="min-w-[100px] hidden lg:table-cell">
-        <div className="font-semibold text-sm sm:text-base">{token.holders.toLocaleString()}</div>
-        <div className="text-xs sm:text-sm text-primary">+{Math.floor(Math.random() * 50)} (1h)</div>
+      <TableCell className="min-w-[100px] hidden lg:table-cell p-2 sm:p-4">
+        <div className="font-semibold text-xs sm:text-sm">{token.holders.toLocaleString()}</div>
+        <div className="text-xs text-primary">+{Math.floor(Math.random() * 50)} (1h)</div>
       </TableCell>
       
-      <TableCell className="min-w-[120px]">
+      <TableCell className="min-w-[120px] hidden md:table-cell p-2 sm:p-4">
         <div className="flex flex-wrap gap-1 mb-1">
           {getSafetyIndicators()}
         </div>
         <div className="text-xs text-muted-foreground">{token.safetyScore}/10</div>
-        {/* Show platform on mobile when market cap column is hidden */}
-        <div className="text-xs text-muted-foreground sm:hidden mt-1">{token.platform}</div>
       </TableCell>
       
-      <TableCell className="min-w-[80px] hidden md:table-cell">
-        <div className="text-sm">{formatAge(token.age)}</div>
+      <TableCell className="min-w-[80px] hidden lg:table-cell p-2 sm:p-4">
+        <div className="text-xs sm:text-sm">{formatAge(token.age)}</div>
       </TableCell>
       
-      <TableCell className="min-w-[100px]">
-        <div className="flex flex-col sm:flex-row gap-1 sm:gap-2">
-          {getActionButton()}
-          <Button variant="outline" size="sm" className="hidden sm:flex">
-            <ChartLine className="w-4 h-4" />
+      <TableCell className="min-w-[80px] sm:min-w-[120px] p-2 sm:p-4">
+        <div className="flex flex-col gap-1">
+          <Button 
+            size="sm" 
+            className="bg-primary hover:bg-primary/90 text-primary-foreground text-xs px-2 py-1 w-full"
+          >
+            {t('button.buy')}
           </Button>
-          {/* Show age on mobile when age column is hidden */}
-          <div className="text-xs text-muted-foreground md:hidden">{formatAge(token.age)}</div>
+          <div className="text-xs text-muted-foreground text-center lg:hidden">
+            {formatAge(token.age)}
+          </div>
         </div>
       </TableCell>
     </TableRow>

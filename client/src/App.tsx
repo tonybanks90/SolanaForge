@@ -8,14 +8,20 @@ import { LanguageProvider } from "@/contexts/LanguageContext";
 import Dashboard from "@/pages/Dashboard";
 import Portfolio from "@/pages/Portfolio";
 import NotFound from "@/pages/not-found";
+import Footer from "@/components/Footer";
 
 function Router() {
   return (
-    <Switch>
-      <Route path="/" component={Dashboard} />
-      <Route path="/portfolio" component={Portfolio} />
-      <Route component={NotFound} />
-    </Switch>
+    <div className="min-h-screen flex flex-col">
+      <div className="flex-1">
+        <Switch>
+          <Route path="/" component={Dashboard} />
+          <Route path="/portfolio" component={Portfolio} />
+          <Route component={NotFound} />
+        </Switch>
+      </div>
+      <Footer />
+    </div>
   );
 }
 

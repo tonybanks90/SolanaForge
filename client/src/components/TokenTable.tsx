@@ -114,14 +114,14 @@ export default function TokenTable({ tokens, isLoading, error, viewMode }: Token
         <Table className="min-w-full">
           <TableHeader>
             <TableRow className="bg-muted/50">
-              <TableHead className="font-semibold min-w-[200px] sticky left-0 bg-muted/50 p-2 sm:p-4">{t('table.token')}</TableHead>
-              <TableHead className="font-semibold min-w-[120px] p-2 sm:p-4">{t('table.price')}</TableHead>
+              <TableHead className="font-semibold min-w-[180px] sm:min-w-[200px] sticky left-0 bg-muted/50 p-2 sm:p-4">{t('table.token')}</TableHead>
+              <TableHead className="font-semibold min-w-[90px] sm:min-w-[120px] p-2 sm:p-4">{t('table.price')}</TableHead>
               <TableHead className="font-semibold min-w-[120px] p-2 sm:p-4 hidden sm:table-cell">{t('table.marketCap')}</TableHead>
               <TableHead className="font-semibold min-w-[120px] p-2 sm:p-4 hidden md:table-cell">{t('table.volume')}</TableHead>
               <TableHead className="font-semibold min-w-[100px] p-2 sm:p-4 hidden lg:table-cell">{t('table.holders')}</TableHead>
               <TableHead className="font-semibold min-w-[120px] p-2 sm:p-4 hidden md:table-cell">{t('table.safety')}</TableHead>
               <TableHead className="font-semibold min-w-[80px] p-2 sm:p-4 hidden lg:table-cell">{t('table.age')}</TableHead>
-              <TableHead className="font-semibold min-w-[140px] p-2 sm:p-4">{t('table.actions')}</TableHead>
+              <TableHead className="font-semibold min-w-[80px] sm:min-w-[120px] p-2 sm:p-4">{t('table.actions')}</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
