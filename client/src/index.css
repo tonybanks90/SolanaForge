@@ -77,21 +77,28 @@
   }
 
   ::-webkit-scrollbar-track {
-    @apply bg-muted;
+    background-color: hsl(var(--muted));
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-border rounded-full;
+    background-color: hsl(var(--border));
+    border-radius: 9999px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-muted-foreground;
+    background-color: hsl(var(--muted-foreground));
   }
 }
 
 @layer components {
   .token-row-hover {
-    @apply hover:bg-muted transition-colors;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+  }
+  
+  .token-row-hover:hover {
+    background-color: hsl(var(--muted));
   }
 
   .safety-indicator {
