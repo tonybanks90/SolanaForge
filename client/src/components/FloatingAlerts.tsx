@@ -12,7 +12,13 @@ export default function FloatingAlerts() {
   useEffect(() => {
     // Show only unread alerts
     const unreadAlerts = alerts.filter(alert => !alert.isRead).slice(0, 3);
-    setVisibleAlerts(unreadAlerts);
+    setVisibleAlerts(prev => {
+      // Only update if the alerts have actually changed
+      if (JSON.stringify(prev) !== JSON.stringify(unreadAlerts)) {
+        return unreadAlerts;
+      }
+      return prev;
+    });
   }, [alerts]);
 
   const handleClose = (alertId: number) => {
@@ -47,7 +53,7 @@ export default function FloatingAlerts() {
   }
 
   return (
-    <div className="fixed bottom-6 right-6 space-y-3 z-50">
+    <div className="fixed bottom-6 right-6 space-y-3 z-50 floating-alerts-mobile">
       {visibleAlerts.map((alert) => (
         <div
           key={alert.id}

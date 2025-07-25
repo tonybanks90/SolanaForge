@@ -4,8 +4,15 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { 
+  DropdownMenu, 
+  DropdownMenuContent, 
+  DropdownMenuItem, 
+  DropdownMenuTrigger 
+} from '@/components/ui/dropdown-menu';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Search } from 'lucide-react';
+import { useTheme } from '@/contexts/ThemeContext';
+import { Search, RefreshCw, Table, Grid3X3, ChevronDown, Moon, Sun, Languages, Palette } from 'lucide-react';
 import type { TokenFilters } from '@/types';
 
 interface MobileMenuProps {
@@ -13,10 +20,26 @@ interface MobileMenuProps {
   onClose: () => void;
   filters: TokenFilters;
   onFiltersChange: (filters: TokenFilters) => void;
+  onRefresh: () => void;
+  autoRefresh: boolean;
+  onAutoRefreshToggle: () => void;
+  viewMode: 'table' | 'cards';
+  onViewModeChange: (mode: 'table' | 'cards') => void;
 }
 
-export default function MobileMenu({ isOpen, onClose, filters, onFiltersChange }: MobileMenuProps) {
-  const { t } = useLanguage();
+export default function MobileMenu({ 
+  isOpen, 
+  onClose, 
+  filters, 
+  onFiltersChange,
+  onRefresh,
+  autoRefresh,
+  onAutoRefreshToggle,
+  viewMode,
+  onViewModeChange
+}: MobileMenuProps) {
+  const { language, setLanguage, t } = useLanguage();
+  const { theme, toggleTheme } = useTheme();
 
   const handleFilterChange = (key: keyof TokenFilters, value: any) => {
     const newFilters = { ...filters, [key]: value };
@@ -35,8 +58,105 @@ export default function MobileMenu({ isOpen, onClose, filters, onFiltersChange }
         </SheetHeader>
         
         <div className="py-6 space-y-6">
+          {/* Mobile Controls */}
+          <div className="space-y-4">
+            <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider">
+              Controls
+            </h3>
+            
+            {/* View Mode Toggle */}
+            <div className="space-y-2">
+              <Label className="text-sm text-muted-foreground">View Mode</Label>
+              <div className="flex bg-card rounded-lg p-1">
+                <Button
+                  variant={viewMode === 'table' ? 'default' : 'ghost'}
+                  size="sm"
+                  onClick={() => onViewModeChange('table')}
+                  className="flex-1"
+                >
+                  <Table className="w-4 h-4 mr-2" />
+                  Table
+                </Button>
+                <Button
+                  variant={viewMode === 'cards' ? 'default' : 'ghost'}
+                  size="sm"
+                  onClick={() => onViewModeChange('cards')}
+                  className="flex-1"
+                >
+                  <Grid3X3 className="w-4 h-4 mr-2" />
+                  Cards
+                </Button>
+              </div>
+            </div>
+
+            {/* Auto-refresh Toggle */}
+            <div className="space-y-2">
+              <Label className="text-sm text-muted-foreground">Auto Refresh</Label>
+              <Button
+                variant={autoRefresh ? 'default' : 'outline'}
+                size="sm"
+                onClick={onAutoRefreshToggle}
+                className="w-full"
+              >
+                <RefreshCw className={`w-4 h-4 mr-2 ${autoRefresh ? 'animate-spin' : ''}`} />
+                {autoRefresh ? 'Auto ON' : 'Auto OFF'}
+              </Button>
+            </div>
+
+            {/* Manual Refresh */}
+            <Button variant="outline" size="sm" onClick={onRefresh} className="w-full">
+              <RefreshCw className="w-4 h-4 mr-2" />
+              Refresh Now
+            </Button>
+
+            {/* Language Toggle */}
+            <div className="space-y-2">
+              <Label className="text-sm text-muted-foreground">Language</Label>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="outline" size="sm" className="w-full justify-between">
+                    <div className="flex items-center">
+                      <Languages className="w-4 h-4 mr-2" />
+                      {language === 'en' ? 'English' : '中文'}
+                    </div>
+                    <ChevronDown className="w-4 h-4" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="w-full">
+                  <DropdownMenuItem onClick={() => setLanguage('en')}>
+                    English
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => setLanguage('zh')}>
+                    中文
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
+
+            {/* Theme Toggle */}
+            <div className="space-y-2">
+              <Label className="text-sm text-muted-foreground">Theme</Label>
+              <Button variant="outline" size="sm" onClick={toggleTheme} className="w-full justify-start">
+                {theme === 'dark' ? (
+                  <>
+                    <Sun className="w-4 h-4 mr-2" />
+                    Switch to Light
+                  </>
+                ) : (
+                  <>
+                    <Moon className="w-4 h-4 mr-2" />
+                    Switch to Dark
+                  </>
+                )}
+              </Button>
+            </div>
+          </div>
+
           {/* Navigation */}
           <nav className="space-y-2">
+            <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider">
+              Navigation
+            </h3>
             <a href="#" className="block py-2 text-primary font-medium">
               {t('nav.allTokens')}
             </a>

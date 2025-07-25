@@ -59,70 +59,73 @@ export default function Header({
           </nav>
 
           {/* Controls */}
-          <div className="flex items-center space-x-4">
-            {/* View Mode Toggle */}
-            <div className="hidden md:flex bg-card rounded-lg p-1">
+          <div className="flex items-center space-x-2 md:space-x-4">
+            {/* Desktop Controls */}
+            <div className="hidden md:flex items-center space-x-4">
+              {/* View Mode Toggle */}
+              <div className="bg-card rounded-lg p-1">
+                <Button
+                  variant={viewMode === 'table' ? 'default' : 'ghost'}
+                  size="sm"
+                  onClick={() => onViewModeChange('table')}
+                >
+                  <Table className="w-4 h-4" />
+                </Button>
+                <Button
+                  variant={viewMode === 'cards' ? 'default' : 'ghost'}
+                  size="sm"
+                  onClick={() => onViewModeChange('cards')}
+                >
+                  <Grid3X3 className="w-4 h-4" />
+                </Button>
+              </div>
+
+              {/* Auto-refresh Toggle */}
               <Button
-                variant={viewMode === 'table' ? 'default' : 'ghost'}
+                variant="outline"
                 size="sm"
-                onClick={() => onViewModeChange('table')}
+                onClick={onAutoRefreshToggle}
+                className={autoRefresh ? 'bg-primary/20 border-primary' : ''}
               >
-                <Table className="w-4 h-4" />
+                <RefreshCw className={`w-4 h-4 mr-2 ${autoRefresh ? 'animate-spin' : ''}`} />
+                Auto
               </Button>
-              <Button
-                variant={viewMode === 'cards' ? 'default' : 'ghost'}
-                size="sm"
-                onClick={() => onViewModeChange('cards')}
-              >
-                <Grid3X3 className="w-4 h-4" />
+
+              {/* Manual Refresh */}
+              <Button variant="outline" size="sm" onClick={onRefresh}>
+                <RefreshCw className="w-4 h-4" />
+              </Button>
+
+              {/* Language Toggle */}
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="outline" size="sm">
+                    {language.toUpperCase()}
+                    <ChevronDown className="w-4 h-4 ml-2" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent>
+                  <DropdownMenuItem onClick={() => setLanguage('en')}>
+                    English
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => setLanguage('zh')}>
+                    中文
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+
+              {/* Theme Toggle */}
+              <Button variant="outline" size="sm" onClick={toggleTheme}>
+                {theme === 'dark' ? (
+                  <Sun className="w-4 h-4 text-primary" />
+                ) : (
+                  <Moon className="w-4 h-4 text-primary" />
+                )}
               </Button>
             </div>
 
-            {/* Auto-refresh Toggle */}
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={onAutoRefreshToggle}
-              className={autoRefresh ? 'bg-primary/20 border-primary' : ''}
-            >
-              <RefreshCw className={`w-4 h-4 mr-2 ${autoRefresh ? 'animate-spin' : ''}`} />
-              Auto
-            </Button>
-
-            {/* Manual Refresh */}
-            <Button variant="outline" size="sm" onClick={onRefresh}>
-              <RefreshCw className="w-4 h-4" />
-            </Button>
-
-            {/* Language Toggle */}
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="outline" size="sm">
-                  {language.toUpperCase()}
-                  <ChevronDown className="w-4 h-4 ml-2" />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent>
-                <DropdownMenuItem onClick={() => setLanguage('en')}>
-                  English
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => setLanguage('zh')}>
-                  中文
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-
-            {/* Theme Toggle */}
-            <Button variant="outline" size="sm" onClick={toggleTheme}>
-              {theme === 'dark' ? (
-                <Sun className="w-4 h-4 text-primary" />
-              ) : (
-                <Moon className="w-4 h-4 text-primary" />
-              )}
-            </Button>
-
-            {/* Connect Wallet */}
-            <Button className="bg-primary text-primary-foreground hover:bg-primary/90">
+            {/* Connect Wallet - always visible */}
+            <Button className="bg-primary text-primary-foreground hover:bg-primary/90 hidden sm:flex">
               {t('button.connectWallet')}
             </Button>
 

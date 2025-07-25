@@ -165,4 +165,27 @@
   .border-primary-green {
     border-color: hsl(134, 100%, 50%);
   }
+
+  /* Mobile responsive utilities */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Mobile floating alerts positioning */
+  @media (max-width: 768px) {
+    .floating-alerts-mobile {
+      bottom: 80px !important;
+      right: 16px !important;
+      left: 16px !important;
+    }
+    
+    .floating-alerts-mobile > div {
+      max-width: none !important;
+    }
+  }
 }
