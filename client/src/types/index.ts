@@ -1,5 +1,6 @@
 export interface TokenFilters {
   search?: string;
+  chain?: string;
   platform?: string;
   category?: string;
   minMarketCap?: number;

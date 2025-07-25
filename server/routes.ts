@@ -10,6 +10,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const filters = {
         search: req.query.search as string,
+        chain: req.query.chain as string,
         platform: req.query.platform as string,
         category: req.query.category as string,
         minMarketCap: req.query.minMarketCap ? parseFloat(req.query.minMarketCap as string) : undefined,

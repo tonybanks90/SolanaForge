@@ -128,7 +128,12 @@ export default function TokenRow({ token }: TokenRowProps) {
       
       <TableCell className="min-w-[120px] hidden sm:table-cell p-2 sm:p-4">
         <div className="font-semibold text-xs sm:text-sm">{formatNumber(token.marketCap, '')}</div>
-        <div className="text-xs text-muted-foreground">{token.platform}</div>
+        <div className="flex space-x-1">
+          <div className="text-xs text-muted-foreground">{token.platform}</div>
+          <div className="text-xs text-primary bg-primary/10 px-1 rounded capitalize">
+            {token.chain}
+          </div>
+        </div>
       </TableCell>
       
       <TableCell className="min-w-[120px] hidden md:table-cell p-2 sm:p-4">

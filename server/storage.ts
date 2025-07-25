@@ -11,6 +11,7 @@ export interface IStorage {
   // Token methods
   getTokens(filters?: {
     search?: string;
+    chain?: string;
     platform?: string;
     category?: string;
     minMarketCap?: number;
@@ -310,6 +311,7 @@ export class DatabaseStorage implements IStorage {
 
   async getTokens(filters?: {
     search?: string;
+    chain?: string;
     platform?: string;
     category?: string;
     minMarketCap?: number;
@@ -331,6 +333,10 @@ export class DatabaseStorage implements IStorage {
             ilike(tokens.address, searchLower)
           )
         );
+      }
+
+      if (filters.chain) {
+        conditions.push(eq(tokens.chain, filters.chain));
       }
 
       if (filters.platform) {

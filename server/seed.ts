@@ -13,6 +13,7 @@ export async function seedDatabase() {
 
   // Sample tokens data
   const sampleTokens = [
+    // Solana Tokens
     {
       symbol: "LDRAGO",
       name: "Legendary Dragon",
@@ -22,6 +23,7 @@ export async function seedDatabase() {
       volume24h: "45200",
       holders: 1247,
       priceChange24h: "15.6",
+      chain: "solana",
       platform: "pump.fun",
       age: 2,
       lpBurned: true,
@@ -43,6 +45,7 @@ export async function seedDatabase() {
       volume24h: "890500",
       holders: 3456,
       priceChange24h: "245.8",
+      chain: "solana",
       platform: "raydium",
       age: 7,
       lpBurned: true,
@@ -64,6 +67,7 @@ export async function seedDatabase() {
       volume24h: "12300",
       holders: 567,
       priceChange24h: "-12.3",
+      chain: "solana",
       platform: "meteora",
       age: 180,
       lpBurned: false,
@@ -72,6 +76,96 @@ export async function seedDatabase() {
       safetyScore: 3,
       category: "completed",
       socialLinks: JSON.stringify({})
+    },
+    // Bitcoin Tokens
+    {
+      symbol: "BTCMEME",
+      name: "Bitcoin Meme",
+      address: "bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh",
+      price: "0.00045",
+      marketCap: "892000",
+      volume24h: "234500",
+      holders: 2134,
+      priceChange24h: "89.7",
+      chain: "bitcoin",
+      platform: "odin.fun",
+      age: 15,
+      lpBurned: true,
+      renounced: false,
+      honeypotCheck: true,
+      safetyScore: 7,
+      category: "trending",
+      socialLinks: JSON.stringify({
+        twitter: "https://x.com/btcmeme",
+        website: "https://btcmeme.fun"
+      })
+    },
+    {
+      symbol: "SATOSHI",
+      name: "Satoshi Token",
+      address: "bc1pqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq3sf2dp",
+      price: "0.0012",
+      marketCap: "345600",
+      volume24h: "78900",
+      holders: 789,
+      priceChange24h: "23.4",
+      chain: "bitcoin",
+      platform: "tychi.fun",
+      age: 45,
+      lpBurned: false,
+      renounced: true,
+      honeypotCheck: true,
+      safetyScore: 6,
+      category: "new",
+      socialLinks: JSON.stringify({
+        telegram: "https://t.me/satoshitoken"
+      })
+    },
+    // Ethereum Tokens
+    {
+      symbol: "UNIMEME",
+      name: "Uniswap Meme",
+      address: "0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984",
+      price: "0.0567",
+      marketCap: "12450000",
+      volume24h: "3456700",
+      holders: 8934,
+      priceChange24h: "156.8",
+      chain: "ethereum",
+      platform: "uniswap",
+      age: 3,
+      lpBurned: true,
+      renounced: true,
+      honeypotCheck: true,
+      safetyScore: 9,
+      category: "trending",
+      socialLinks: JSON.stringify({
+        twitter: "https://x.com/unimeme",
+        website: "https://unimeme.io",
+        discord: "https://discord.gg/unimeme"
+      })
+    },
+    {
+      symbol: "ETHBULL",
+      name: "Ethereum Bull",
+      address: "0xA0b86a33E6C0B7C8C1E4CaF092a7dFf0d7F95C4A",
+      price: "0.0234",
+      marketCap: "5670000",
+      volume24h: "1234500",
+      holders: 4567,
+      priceChange24h: "67.3",
+      chain: "ethereum",
+      platform: "uniswap",
+      age: 12,
+      lpBurned: true,
+      renounced: false,
+      honeypotCheck: true,
+      safetyScore: 8,
+      category: "new",
+      socialLinks: JSON.stringify({
+        twitter: "https://x.com/ethbull",
+        telegram: "https://t.me/ethbull"
+      })
     }
   ];
 

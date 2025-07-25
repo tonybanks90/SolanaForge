@@ -13,6 +13,7 @@ export const tokens = pgTable("tokens", {
   volume24h: decimal("volume_24h", { precision: 18, scale: 2 }).notNull(),
   holders: integer("holders").notNull(),
   priceChange24h: decimal("price_change_24h", { precision: 5, scale: 2 }).notNull(),
+  chain: text("chain").notNull().default("solana"), // solana, bitcoin, ethereum
   platform: text("platform").notNull(),
   age: integer("age").notNull(), // in minutes
   lpBurned: boolean("lp_burned").notNull().default(false),

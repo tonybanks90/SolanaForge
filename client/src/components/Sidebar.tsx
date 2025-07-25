@@ -98,6 +98,25 @@ export default function Sidebar({ filters, onFiltersChange }: SidebarProps) {
             {t('filters.title')}
           </h3>
           
+          {/* Chain Filter */}
+          <div className="space-y-2">
+            <Label className="text-sm text-muted-foreground">Chain</Label>
+            <Select
+              value={localFilters.chain || 'all'}
+              onValueChange={(value) => handleFilterChange('chain', value === 'all' ? undefined : value)}
+            >
+              <SelectTrigger>
+                <SelectValue placeholder="All chains" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">All chains</SelectItem>
+                <SelectItem value="solana">Solana</SelectItem>
+                <SelectItem value="bitcoin">Bitcoin</SelectItem>
+                <SelectItem value="ethereum">Ethereum</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+
           {/* Platform Filter */}
           <div className="space-y-2">
             <Label className="text-sm text-muted-foreground">{t('filters.platform')}</Label>
@@ -110,10 +129,12 @@ export default function Sidebar({ filters, onFiltersChange }: SidebarProps) {
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="all">All platforms</SelectItem>
-                <SelectItem value="pump.fun">Pump.fun</SelectItem>
-                <SelectItem value="raydium">Raydium</SelectItem>
-                <SelectItem value="meteora">Meteora</SelectItem>
-                <SelectItem value="orca">Orca</SelectItem>
+                <SelectItem value="pump.fun">Pump.fun (Solana)</SelectItem>
+                <SelectItem value="raydium">Raydium (Solana)</SelectItem>
+                <SelectItem value="meteora">Meteora (Solana)</SelectItem>
+                <SelectItem value="odin.fun">Odin.fun (Bitcoin)</SelectItem>
+                <SelectItem value="tychi.fun">Tychi.fun (Bitcoin)</SelectItem>
+                <SelectItem value="uniswap">Uniswap (Ethereum)</SelectItem>
               </SelectContent>
             </Select>
           </div>
