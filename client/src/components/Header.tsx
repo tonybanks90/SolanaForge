@@ -37,12 +37,12 @@ export default function Header({
         <div className="flex items-center justify-between h-16">
           {/* Logo and Brand */}
           <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-              <i className="fas fa-chart-line text-primary-foreground text-xl"></i>
+            <div className="w-10 h-10 bg-gradient-to-r from-green-400 to-green-500 rounded-lg flex items-center justify-center">
+              <span className="text-white font-bold text-lg">O</span>
             </div>
             <div>
-              <h1 className="text-xl font-bold text-primary">{t('header.title')}</h1>
-              <p className="text-xs text-muted-foreground">{t('header.subtitle')}</p>
+              <h1 className="text-xl font-bold text-primary">OMAXPro</h1>
+              <p className="text-xs text-muted-foreground">Multi-Chain Analytics</p>
             </div>
           </div>
 

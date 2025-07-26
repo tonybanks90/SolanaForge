@@ -8,8 +8,8 @@ interface LanguageContextType {
 }
 
 const translations: Translations = {
-  'header.title': { en: 'GMGN.AI', zh: 'GMGN.AI' },
-  'header.subtitle': { en: 'Snipe MEME Tokens', zh: '狙击模因代币' },
+  'header.title': { en: 'OMAXPro', zh: 'OMAXPro' },
+  'header.subtitle': { en: 'Multi-Chain Analytics', zh: '多链分析' },
   'nav.allTokens': { en: 'All Tokens', zh: '所有代币' },
   'nav.trenches': { en: 'Trenches', zh: '战壕' },
   'nav.copyTrade': { en: 'Copy Trade', zh: '跟单交易' },
@@ -63,7 +63,7 @@ const translations: Translations = {
   'button.hide': { en: 'Hide', zh: '隐藏' },
   'button.show': { en: 'Show', zh: '显示' },
   'button.archive': { en: 'Archive', zh: '归档' },
-  'footer.description': { en: 'Best tool to Discover and Snipe MEME tokens faster. Follow Smart Money to earn!', zh: '发现和狙击模因代币的最佳工具。跟随聪明资金赚钱！' },
+  'footer.description': { en: 'Advanced multi-chain cryptocurrency analytics platform. Track Bitcoin, Ethereum, and Solana tokens with real-time insights.', zh: '先进的多链加密货币分析平台。通过实时洞察跟踪比特币、以太坊和Solana代币。' },
   'footer.product': { en: 'Product', zh: '产品' },
   'footer.resources': { en: 'Resources', zh: '资源' },
   'footer.legal': { en: 'Legal', zh: '法律' },

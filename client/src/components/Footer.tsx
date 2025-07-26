@@ -10,10 +10,10 @@ export default function Footer() {
           {/* Brand Section */}
           <div className="space-y-4">
             <div className="flex items-center space-x-3">
-              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                <i className="fas fa-chart-line text-primary-foreground text-sm"></i>
+              <div className="w-8 h-8 bg-gradient-to-r from-green-400 to-green-500 rounded-lg flex items-center justify-center">
+                <span className="text-white font-bold text-sm">O</span>
               </div>
-              <h3 className="text-lg font-bold text-primary">{t('header.title')}</h3>
+              <h3 className="text-lg font-bold text-primary">OMAXPro</h3>
             </div>
             <p className="text-sm text-muted-foreground">
               {t('footer.description')}

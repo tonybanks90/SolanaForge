@@ -1,12 +1,15 @@
-# Token Tracker Dashboard
+# OMAXPro - Multi-Chain Token Analytics
 
 ## Overview
 
-This is a modern web application for tracking and analyzing cryptocurrency tokens, specifically focused on meme coins and new token launches. The application provides real-time token data, filtering capabilities, safety analysis, and alert systems for traders and investors.
+This is a modern web application for tracking and analyzing cryptocurrency tokens across multiple blockchains (Bitcoin, Ethereum, and Solana). The application provides real-time token data, filtering capabilities, safety analysis, and alert systems for traders and investors. Now branded as OMAXPro with multi-chain support and enhanced analytics features.
 
 ## User Preferences
 
 Preferred communication style: Simple, everyday language.
+Application Name: OMAXPro
+Branding: Multi-chain cryptocurrency analytics platform
+Logo: Green gradient "O" icon representing the OMAXPro brand
 
 ## System Architecture
 
